@@ -48,16 +48,6 @@ The Deep Q learning algorithm has been described in pseudo code in the research 
 The scripts used to define the deep Q neural network come from the lunar lander tutorial in the Deep Reinforcement Learning lesson from Udacity. In consists in three files:
 
 - `dqn_agent.py`: Python script defining the agent class which learns and interacts with the environment and the replay buffer class to store experience tuples. The parameters (buffer size, batch size, discount factor, soft updating parameter, learning rate and network update frequency are let to their initial values from 'lunar lander' tutorial).
-
-```python
-BUFFER_SIZE = int(1e5)  # replay buffer size
-BATCH_SIZE = 64         # minibatch size
-GAMMA = 0.99            # discount factor
-TAU = 1e-3              # for soft update of target parameters
-LR = 5e-4               # learning rate 
-UPDATE_EVERY = 4        # how often to update the network
-```
-
     - The dqn agent intitializes the local and target networks and several functions:
         - step: stores experience in the replay memory and learns every time steps by updating the target network with local network weights,
         - act: returns actions for given state as per current policy,
@@ -65,7 +55,6 @@ UPDATE_EVERY = 4        # how often to update the network
     - The replay buffer stores experience tuples with the functions:
         - add: to add a new experience into memory. Experience is defined by (state, action, reward, next_state, done)
         - sample: to randomly sample a batch of experiences from memory for the learning
-
 
 - `model.py`: Python script which defines the Q network that will be trained to provide the action to take from a state. This neural network is composed of 3 layers:
     - The input layer which size correponds to dimension of each state.
@@ -78,6 +67,17 @@ UPDATE_EVERY = 4        # how often to update the network
     - Define and train the deep Q network
 
 ### Results
+
+Parameters used in the agent training:
+
+```python
+BUFFER_SIZE = int(1e5)  # replay buffer size
+BATCH_SIZE = 64         # minibatch size
+GAMMA = 0.99            # discount factor
+TAU = 1e-3              # for soft update of target parameters
+LR = 5e-4               # learning rate 
+UPDATE_EVERY = 4        # how often to update the network
+```
 
 The deep Q network has been trained using Udacity's workspace with GPU. The results of training are summarized belowed (from `Navigation.ipynb`):
 
